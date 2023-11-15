@@ -32,7 +32,7 @@ export default class Navigation extends Component {
                         </li>
 
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/add">Add  (will be delted) </Link>
+                            <Link class="nav-link" to="/add">Temp  (for Reservation) </Link>
                         </li>
 
                     </ul>

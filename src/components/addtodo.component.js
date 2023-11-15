@@ -5,50 +5,77 @@ export default class AddTodo extends Component {
 
     constructor(props){
         super(props);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeResponsible = this.onChangeResponsible.bind(this);
-        this.onChangePriority = this.onChangePriority.bind(this);
+        this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeTime = this.onChangeTime.bind(this);
+        this.onChangeGuestNum = this.onChangeGuestNum.bind(this);
+        this.onChangeFname = this.onChangeFname.bind(this);
+        this.onChangeLname = this.onChangeLname.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
         this.state={
-            description:'',
-            responsible:'',
-            priority: '',
-            isCompleted: false
+            date:'',
+            time:'',
+            geustNum:'',
+            fname:'',
+            lname:'',
+            contact:''
         }
     }
 
-    onChangePriority(e){
+    onChangeDate(e){
         this.setState({
-            priority:e.target.value
+            date:e.target.value
         })
     }
 
-    onChangeResponsible(e){
+    onChangeTime(e){
         this.setState({
-            responsible:e.target.value
+            time:e.target.value
         })
     }
 
-    onChangeDescription(e){
+    onChangeGuestNum(e){
         this.setState({
-            description:e.target.value
+            geustNum:e.target.value
+        })
+    }
+
+    onChangeFname(e){
+        this.setState({
+            fname:e.target.value
+        })
+    }
+
+    onChangeLname(e){
+        this.setState({
+            lname:e.target.value
+        })
+    }
+
+    onChangeContact(e){
+        this.setState({
+            contact:e.target.value
         })
     }
     
     onSubmit(e){
        e.preventDefault();
-       console.log(this.state.description)
-       console.log(this.state.isCompleted)
-       console.log(this.state.priority)
-       console.log(this.state.responsible)
+       console.log(this.state.date)
+       console.log(this.state.time)
+       console.log(this.state.geustNum)
+       console.log(this.state.fname)
+       console.log(this.state.lname)
+       console.log(this.state.contact)
+
 
         const todo = {
-            description:this.state.description,
-            responsible:this.state.responsible,
-            priority: this.state.priority,
-            isCompleted: this.state.isCompleted
+            date:this.state.date,
+            time:this.state.time,
+            geustNum: this.state.geustNum,
+            fname: this.state.fname,
+            lname:this.state.lname,
+            contact:this.state.contact
         }
 
         axios.post('http://localhost:8081/add',todo)
@@ -59,10 +86,13 @@ export default class AddTodo extends Component {
 
 
        this.setState({
-        description:'',
-        responsible:'',
-        priority: '',
-        isCompleted: false
+        date:'',
+        time:'',
+        geustNum:'',
+        fname:'',
+        lname:'',
+        contact:'',
+       
      })
     }
     
@@ -75,34 +105,37 @@ export default class AddTodo extends Component {
                 <div class="col-lg-6">
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Description</label>
-                            <input type="text" class="form-control" value={this.state.description} onChange={this.onChangeDescription}  />
+                            <label for="exampleFormControlInput1">Date</label>
+                            <input type="text" class="form-control" value={this.state.date} onChange={this.onChangeDate}  />
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">Responsible</label>
-                            <input type="text" class="form-control" value={this.state.responsible} onChange={this.onChangeResponsible}/>
+                            <label for="exampleFormControlInput1">Time</label>
+                            <input type="text" class="form-control" value={this.state.time} onChange={this.onChangeTime}/>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleFormControlInput1">priority</label>
-                            <input type="text" class="form-control" value={this.state.priority} onChange={this.onChangePriority} />
+                            <label for="exampleFormControlInput1">The numbers of Guests</label>
+                            <input type="text" class="form-control" value={this.state.guestNum} onChange={this.onChangeGuestNum} />
                         </div>
 
-                        {/* <div class="form-check">
-                        <label for="exampleFormControlInput1">Is Complited</label> <br></br>
-                            <input class="form-check-input" type="radio"  value="option1" checked/>
-                                <label class="form-check-label" for="exampleRadios1">
-                                   True
-                                </label>
-                                <br/>
-                                <input class="form-check-input" type="radio" value="option2" />
-                                <label class="form-check-label" for="exampleRadios3">
-                                    False
-                                </label>
-                        </div> */}
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">First Name</label>
+                            <input type="text" class="form-control" value={this.state.fname} onChange={this.onChangeFname} />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Last Name</label>
+                            <input type="text" class="form-control" value={this.state.lanme} onChange={this.onChangeLname} />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Contact</label>
+                            <input type="text" class="form-control" value={this.state.contact} onChange={this.onChangeContact} />
+                        </div>
+
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Make a reservation</button>
                     </form>
                 </div>
             </div>
