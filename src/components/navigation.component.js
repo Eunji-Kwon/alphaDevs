@@ -6,17 +6,33 @@ export default class Navigation extends Component {
         return (
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <Link class="navbar-brand" to="/">Todo App</Link>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> */}
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/">Home <span class="sr-only">(current)</span></Link>
+                            <Link class="nav-link" to="/">Home </Link>
                         </li>
 
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/add">Add</Link>
+                            <Link class="nav-link" to="/menu">Menu </Link>
+                        </li>
+
+                        <li class="nav-item active">
+                            <Link class="nav-link" to="/reservation">Reservation </Link>
+                        </li>
+
+                        <li class="nav-item active">
+                            <Link class="nav-link" to="/location">Location </Link>
+                        </li>
+
+                        <li class="nav-item active">
+                            <Link class="nav-link" to="/about">About Us </Link>
+                        </li>
+
+                        <li class="nav-item active">
+                            <Link class="nav-link" to="/add">Add  (will be delted) </Link>
                         </li>
 
                     </ul>
