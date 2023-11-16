@@ -13,7 +13,8 @@ import ReservationLists from './components/reservationlists.component';
 import AddReservation from './components/addreservation.component';
 import Menu from './components/menu.component';
 import Location from './components/location.component'
-import About from './components/about.component';
+//import About from './components/about.component';
+import AboutUs from './components/about.component';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
       <Route path='/menu' Component={Menu}/>
       <Route path='/reservation' Component={AddReservation}/>  /* same as AddTodo */
       <Route path='/location' Component={Location}/>
-      <Route path='/about' Component={About}/>
+      <Route path='/about' Component={AboutUs}/>
       <Route path='/' Component={Home}/>
   
     </Routes>
