@@ -1,144 +1,123 @@
-import axios from "axios";
-import React, { Component } from "react";
+import React, { useState } from "react";
+//import './RoomReservation.css';
 
-export default class AddTodo extends Component {
+const RoomReservation = () => {
+    const [numRooms, setNumRooms] = useState(1);
+    const [showRoomSelection, setShowRoomSelection] = useState(false);
 
-    constructor(props){
-        super(props);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.onChangeTime = this.onChangeTime.bind(this);
-        this.onChangeGuestNum = this.onChangeGuestNum.bind(this);
-        this.onChangeFname = this.onChangeFname.bind(this);
-        this.onChangeLname = this.onChangeLname.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    const roomTypes = [
+        { type: 'Standard', price: 100 },
+        { type: 'Deluxe', price: 150 },
+        { type: 'Suite', price: 300 },
+    ];
 
+    const [selectedRooms, setSelectedRooms] = useState([
+        {
+            type: roomTypes[0].type,
+        },
+    ]);
 
-        this.state={
-            date:'',
-            time:'',
-            geustNum:'',
-            fname:'',
-            lname:'',
-            contact:''
-        }
-    }
+    const handleRoomTypeChange = (index, value) => {
+        const updatedRooms = [...selectedRooms];
 
-    onChangeDate(e){
-        this.setState({
-            date:e.target.value
-        })
-    }
-
-    onChangeTime(e){
-        this.setState({
-            time:e.target.value
-        })
-    }
-
-    onChangeGuestNum(e){
-        this.setState({
-            geustNum:e.target.value
-        })
-    }
-
-    onChangeFname(e){
-        this.setState({
-            fname:e.target.value
-        })
-    }
-
-    onChangeLname(e){
-        this.setState({
-            lname:e.target.value
-        })
-    }
-
-    onChangeContact(e){
-        this.setState({
-            contact:e.target.value
-        })
-    }
-    
-    onSubmit(e){
-       e.preventDefault();
-       console.log(this.state.date)
-       console.log(this.state.time)
-       console.log(this.state.geustNum)
-       console.log(this.state.fname)
-       console.log(this.state.lname)
-       console.log(this.state.contact)
-
-
-        const todo = {
-            date:this.state.date,
-            time:this.state.time,
-            geustNum: this.state.geustNum,
-            fname: this.state.fname,
-            lname:this.state.lname,
-            contact:this.state.contact
+        if (!updatedRooms[index]) {
+            updatedRooms[index] = { type: value };
+        } else {
+            updatedRooms[index].type = value;
         }
 
-        axios.post('http://localhost:8081/add',todo)
-            .then(res=>
-                console.log(res.data))
+        setSelectedRooms(updatedRooms);
+    };
 
+    const renderRoomSelector = (index) => {
+        const roomOptions = roomTypes.map((room, optionIndex) => (
+            <option key={optionIndex} value={room.type}>
+                {room.type}
+            </option>
+        ));
 
-
-
-       this.setState({
-        date:'',
-        time:'',
-        geustNum:'',
-        fname:'',
-        lname:'',
-        contact:'',
-       
-     })
-    }
-    
-    
-
-    render() {
         return (
-            <div class="container">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-6">
-                    <form onSubmit={this.onSubmit}>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Date</label>
-                            <input type="text" class="form-control" value={this.state.date} onChange={this.onChangeDate}  />
-                        </div>
+            <select onChange={(e) => handleRoomTypeChange(index, e.target.value)}>
+                {roomOptions}
+            </select>
+        );
+    };
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Time</label>
-                            <input type="text" class="form-control" value={this.state.time} onChange={this.onChangeTime}/>
-                        </div>
+    const renderRoomSelection = () => {
+        const roomSelections = [];
 
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">The numbers of Guests</label>
-                            <input type="text" class="form-control" value={this.state.guestNum} onChange={this.onChangeGuestNum} />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">First Name</label>
-                            <input type="text" class="form-control" value={this.state.fname} onChange={this.onChangeFname} />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Last Name</label>
-                            <input type="text" class="form-control" value={this.state.lanme} onChange={this.onChangeLname} />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Contact</label>
-                            <input type="text" class="form-control" value={this.state.contact} onChange={this.onChangeContact} />
-                        </div>
-
-                        
-                        <button type="submit" class="btn btn-primary">Make a reservation</button>
-                    </form>
+        for (let i = 0; i < numRooms; i++) {
+            roomSelections.push(
+                <div key={i} className="room-selection">
+                    <p>Room {i + 1}</p>
+                    <label>
+                        Room Type:
+                        {renderRoomSelector(i)}
+                    </label>
                 </div>
-            </div>
-        )
-    }
-}
+            );
+        }
+        return roomSelections;
+    };
+
+    const calculateTotal = () => {
+        let total = 0;
+
+        selectedRooms.forEach((room, index) => {
+            const selectedRoom = roomTypes.find((type) => type.type === room.type);
+
+            if (selectedRoom) {
+                total += selectedRoom.price;
+            } else {
+                console.error('Room type not selected for room ${index + 1}');
+            }
+        });
+
+        // Add taxes (HST i.e., 13%)
+        const taxes = total * 0.13;
+        const grandTotal = total + taxes;
+
+        return { total: total.toFixed(2), taxes: taxes.toFixed(2), grandTotal: grandTotal.toFixed(2) };
+    };
+
+    return (
+        <div>
+            <h1>Book a Room</h1>
+            <p>Select the number of rooms:</p>
+            <input
+                type="number"
+                value={numRooms}
+                onChange={(e) => setNumRooms(parseInt(e.target.value, 10))}
+            />
+
+            <button onClick={() => setShowRoomSelection(true)}>Select Rooms</button>
+
+            {showRoomSelection && (
+                <div>
+                    <h2>Room Selection</h2>
+                    {renderRoomSelection()}
+
+                    <h2>Room Types and Prices</h2>
+                    <ul>
+                        {roomTypes.map((room, index) => (
+                            <li key={index}>
+                                {room.type} - ${room.price} per night
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
+            {showRoomSelection && (
+                <div>
+                    <h2>Total Cost Breakdown</h2>
+                    <p>Total: ${calculateTotal().total}</p>
+                    <p>Taxes (HST 13%): ${calculateTotal().taxes}</p>
+                    <p>Grand Total: ${calculateTotal().grandTotal}</p>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default RoomReservation;

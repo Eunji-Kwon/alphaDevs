@@ -5,7 +5,8 @@ import {BrowserRouter as Router, Route, Link, Routes}
 
 
 import EditList from './components/editlist.component';
-import AddTodo from './components/addtodo.component';
+// import AddTodo from './components/addtodo.component';
+import RoomReservation from './components/addtodo.component';
 // import TodoLists from './components/todolists.component';
 import Navigation from './components/navigation.component';
 import Home from './components/home.component';
@@ -22,7 +23,7 @@ function App() {
     <Routes>
       {/* <Route path='/' Component={TodoLists}/> */}
       <Route path='/edit/:id' Component={EditList}/>
-      <Route path='/add' Component={AddTodo}/>
+      <Route path='/add' Component={RoomReservation}/>
 
       <Route path='/' Component={Home}/>
       <Route path='/menu' Component={Menu}/>
