@@ -5,16 +5,15 @@ import {BrowserRouter as Router, Route, Link, Routes}
 
 
 import EditList from './components/editlist.component';
-import AddTodo from './components/addtodo.component';
-// import TodoLists from './components/todolists.component';
+
 import Navigation from './components/navigation.component';
 import Home from './components/home.component';
 import ReservationLists from './components/reservationlists.component';
 import AddReservation from './components/addreservation.component';
 import Menu from './components/menu.component';
-import Location from './components/location.component'
-//import About from './components/about.component';
+
 import AboutUs from './components/about.component';
+import Login from './components/login.component';
 
 function App() {
   return (
@@ -22,15 +21,14 @@ function App() {
        <Navigation/>
     <Routes>
       {/* <Route path='/' Component={TodoLists}/> */}
-      <Route path='/edit/:id' Component={EditList}/>
-      <Route path='/add' Component={AddTodo}/>
+      <Route path='/edit/:id' Component={EditList}/>      
 
       <Route path='/' Component={Home}/>
       <Route path='/menu' Component={Menu}/>
-      <Route path='/reservation' Component={AddReservation}/>  /* same as AddTodo */
-      <Route path='/location' Component={Location}/>
+      <Route path='/reservation' Component={AddReservation}/>  
+      <Route path='/login' Component={Login}/>
       <Route path='/about' Component={AboutUs}/>
-      <Route path='/' Component={Home}/>
+      
   
     </Routes>
 

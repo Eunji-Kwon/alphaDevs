@@ -23,17 +23,17 @@ export default class Navigation extends Component {
                             <Link class="nav-link" to="/reservation">Reservation </Link>
                         </li>
 
-                        <li class="nav-item active">
-                            <Link class="nav-link" to="/location">Location </Link>
-                        </li>
-
+                       
                         <li class="nav-item active">
                             <Link class="nav-link" to="/about">About Us </Link>
                         </li>
 
+
                         <li class="nav-item active">
-                            <Link class="nav-link" to="/add">Temp  (for Reservation) </Link>
+                            <Link class="nav-link" to="/login">Login </Link>
                         </li>
+
+                   
 
                     </ul>
                 </div>

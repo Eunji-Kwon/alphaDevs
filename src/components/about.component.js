@@ -1,6 +1,9 @@
-import React from "react";
+import React,{Component} from "react";
 
-const AboutUs = () => {
+
+export default class AboutUs extends Component{
+    render(){
+
     return (
         <div className="about-us-container">
         <h1>About Alpha Restaurant</h1>
@@ -55,7 +58,6 @@ const AboutUs = () => {
 
         <p>Thank you for choosing Alpha Restaurant's Reservation System. We look forward to welcoming you and ensuring a memorable dining experience!</p>
       </div>
-    );
-};
-
-export default AboutUs;
+        )
+    }
+}
