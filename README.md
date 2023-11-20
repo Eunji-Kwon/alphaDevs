@@ -1,4 +1,3 @@
 # alphaDevs
 
-main branch - backup
-dev - Final
+main branch - backup // dev - Final
