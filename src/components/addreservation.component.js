@@ -99,37 +99,45 @@ export default class ReservationLists extends Component {
     
 
     render() {
+        const myStyle = {
+            backgroundColor: '#1e1e1eca',
+            fontSize: '18px',
+            
+            border: '1px solid gray',
+            padding: '10px'
+          };
+            
         return (
-            <div class="container">
-                <div class="col-lg-4"></div>
-                <div class="col-lg-6">
+            <div class="container justify-content-center" style={myStyle}> 
+                
+                <div class="col-lg-12 p-5 text-white">
                     <form onSubmit={this.onSubmit}>
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Date</label>
+                        <div class="form-group m-5">
+                            <label for="exampleFormControlInput1" >Date</label>
                             <input type="text" class="form-control" value={this.state.date} onChange={this.onChangeDate}  />
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="exampleFormControlInput1">Time</label>
                             <input type="text" class="form-control" value={this.state.time} onChange={this.onChangeTime}/>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="exampleFormControlInput1">The numbers of Guests</label>
                             <input type="text" class="form-control" value={this.state.guestNum} onChange={this.onChangeGuestNum} />
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="exampleFormControlInput1">First Name</label>
                             <input type="text" class="form-control" value={this.state.fname} onChange={this.onChangeFname} />
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="exampleFormControlInput1">Last Name</label>
                             <input type="text" class="form-control" value={this.state.lanme} onChange={this.onChangeLname} />
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group m-5">
                             <label for="exampleFormControlInput1">Contact</label>
                             <input type="text" class="form-control" value={this.state.contact} onChange={this.onChangeContact} />
                         </div>
