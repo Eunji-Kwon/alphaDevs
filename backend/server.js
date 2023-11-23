@@ -19,6 +19,16 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const db = require("./models");
+db.mongoose.connect(db.url)
+.then(() => {
+  console.log("Connected to the AlphaDevsDB !!");
+})
+.catch(err => {
+  console.log("Not able to connect database !!", err);
+  process.exit();
+});
+
 // Default route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to AlphaDevs' World." });
