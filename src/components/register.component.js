@@ -4,6 +4,7 @@ export default class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: "",
             email: "",
             password: "",
             confirmPassword: ""
@@ -12,10 +13,18 @@ export default class Register extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission logic here using this.state.email,
-        // this.state.password, and this.state.confirmPassword
-        // For example, you might want to send this data to a server or perform validation
-        console.log("Form submitted with email:", this.state.email, "and password:", this.state.password);
+        console.log(
+            "Form submitted with name:",
+            this.state.name,
+            ", email:",
+            this.state.email,
+            "and password:",
+            this.state.password
+        );
+    };
+
+    handleNameChange = (e) => {
+        this.setState({ name: e.target.value });
     };
 
     handleEmailChange = (e) => {
@@ -36,6 +45,17 @@ export default class Register extends Component {
                 <h2>Register</h2>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        value={this.state.name}
+                        onChange={this.handleNameChange}
+                        placeholder="Enter your name"
+                        required
+                    />
+
                         <label htmlFor="email">Email</label>
                         <input
                             type="email"
