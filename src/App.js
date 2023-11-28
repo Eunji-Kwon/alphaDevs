@@ -14,6 +14,7 @@ import Menu from './components/menu.component';
 
 import AboutUs from './components/about.component';
 import Login from './components/login.component';
+import Register from './components/register.component';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path='/reservation' Component={AddReservation}/>  
       <Route path='/login' Component={Login}/>
       <Route path='/about' Component={AboutUs}/>
+      <Route path='/register' Component={Register}/>
       
   
     </Routes>

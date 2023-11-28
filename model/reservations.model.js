@@ -4,12 +4,13 @@ const Schema = mongoose.Schema;
 // RESERVATION SCHEMA 
 
 let Reservation = new Schema({
-    date:{
-        type:String
+    dateTime:{
+        type: Date,
+        required: true
     },
-    time:{
-        type:String
-    },
+    // time:{
+    //     type:String
+    // },
     guestNum:{
         type:Number
     },

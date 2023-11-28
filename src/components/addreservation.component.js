@@ -1,12 +1,14 @@
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import React, { Component } from "react";
 
 export default class ReservationLists extends Component {
 
     constructor(props){
         super(props);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.onChangeTime = this.onChangeTime.bind(this);
+        this.onChangeDateTime = this.onChangeDateTime.bind(this);
+        // this.onChangeTime = this.onChangeTime.bind(this);
         this.onChangeGuestNum = this.onChangeGuestNum.bind(this);
         this.onChangeFname = this.onChangeFname.bind(this);
         this.onChangeLname = this.onChangeLname.bind(this);
@@ -14,8 +16,7 @@ export default class ReservationLists extends Component {
 
 
         this.state={
-            date:'',
-            time:'',
+            dateTime:new Date(),  // Combined date and time as a single field
             geustNum:'',
             fname:'',
             lname:'',
@@ -23,17 +24,16 @@ export default class ReservationLists extends Component {
         }
     }
 
-    onChangeDate(e){
-        this.setState({
-            date:e.target.value
+    onChangeDateTime(date){
+        this.setState({ dateTime: date
         })
     }
 
-    onChangeTime(e){
-        this.setState({
-            time:e.target.value
-        })
-    }
+    // onChangeTime(e){
+    //     this.setState({
+    //         time:e.target.value
+    //     })
+    // }
 
     onChangeGuestNum(e){
         this.setState({
@@ -61,24 +61,23 @@ export default class ReservationLists extends Component {
     
     onSubmit(e){
        e.preventDefault();
-       console.log(this.state.date)
-       console.log(this.state.time)
+       console.log(this.state.dateTime)
        console.log(this.state.geustNum)
        console.log(this.state.fname)
        console.log(this.state.lname)
        console.log(this.state.contact)
 
 
-        const todo = {
-            date:this.state.date,
-            time:this.state.time,
+        const reservationData = {
+            dateTime:this.state.dateTime,
+            // time:this.state.time,
             geustNum: this.state.geustNum,
             fname: this.state.fname,
             lname:this.state.lname,
             contact:this.state.contact
         }
 
-        axios.post('http://localhost:8081/add',todo)
+        axios.post('http://localhost:8081/add',reservationData)
             .then(res=>
                 console.log(res.data))
 
@@ -86,8 +85,8 @@ export default class ReservationLists extends Component {
 
 
        this.setState({
-        date:'',
-            time:'',
+        dateTime:new Date(),
+            // time:'',
             geustNum:'',
             fname:'',
             lname:'',
@@ -113,14 +112,31 @@ export default class ReservationLists extends Component {
                 <div class="col-lg-12 p-5 text-white">
                     <form onSubmit={this.onSubmit}>
                         <div class="form-group m-5">
-                            <label for="exampleFormControlInput1" >Date</label>
-                            <input type="text" class="form-control" value={this.state.date} onChange={this.onChangeDate}  />
+                            {/* <label for="exampleFormControlInput1" >Date & Time</label>
+                            <input type="text" class="form-control" value={this.state.date} onChange={this.onChangeDate}  /> */}
+                        <label htmlFor="dateTimePicker">Date & Time</label>
+                            <br />
+                            <DatePicker
+                                id="dateTimePicker"
+                                selected={this.state.dateTime}
+                                onChange={this.onChangeDateTime}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={15}
+                                timeCaption="Time"
+                                dateFormat="MMMM d, yyyy h:mm aa"
+                                minDate={new Date()}
+                            />
+                        
                         </div>
 
+
+{/* 
                         <div class="form-group m-5">
                             <label for="exampleFormControlInput1">Time</label>
                             <input type="text" class="form-control" value={this.state.time} onChange={this.onChangeTime}/>
                         </div>
+                         */}
 
                         <div class="form-group m-5">
                             <label for="exampleFormControlInput1">The numbers of Guests</label>
