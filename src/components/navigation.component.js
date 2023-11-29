@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import '../components/style.css';
+
 
 export default class Navigation extends Component {
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <Link class="navbar-brand" to="/"> [Restaruant Name] </Link>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <Link class="navbar-brand" to="/"> <img src="logo/logo_without_bg.png" class="logo"></img> </Link>
                 {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> */}
@@ -31,12 +33,11 @@ export default class Navigation extends Component {
 
                         <li class="nav-item active">
                             <Link class="nav-link" to="/login">Login </Link>
-                        </li>
-
-                   
+                        </li>                  
 
                     </ul>
                 </div>
+              
             </nav>
         )
     }

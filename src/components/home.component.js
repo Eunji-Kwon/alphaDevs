@@ -1,4 +1,6 @@
 import React,{Component} from "react";
+import '../components/style.css';
+
 
 export default class Home extends Component{
     render(){
@@ -6,6 +8,8 @@ export default class Home extends Component{
             <div>
                 <p>Welcome to Home</p>
             </div>
+
+            
         )
     }
 }
