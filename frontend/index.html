@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Slideshow container -->
+
+    <div id="header"></div>
+        <div class = "container">
+            <nav>
+                <img src="logo/logo_without_bg.png" class="logo">
+                <ul>
+                    <li><a href="#home">Home</a></li> <!--Provide a link in href of js -->
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#login">Log In</a></li>
+                    <li><a href="#myreservations">My Reservations</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p><span>Alpha Restaurant</span></p>
+                <h1>Where you can find the best italian cuisine <br>Hurry up and try our dishes</h1>
+            </div>
+            <!-- <div class="slider">
+                <span id="slide-1"></span>
+                <span id="slide-2"></span>
+                <span id="slide-3"></span>
+                <div class="image-container">
+                    <img src="restaurant_images/chef-food-service-us-foods-getty.jpeg" class="slide" width="500" height="300" />
+                    <img src="restaurant_images/CoupleAtRestaurant_Lead.jpg" class="slide" width="500" height="300" />
+                    <img src="restaurant_images/Restaurant-Services.jpg" class="slide" width="500" height="300" />
+                    
+                </div>
+                <div class="buttons">
+                  <a href="#slide-1"></a>
+                  <a href="#slide-2"></a>
+                  <a href="#slide-3"></a>
+                </div>
+            </div> -->
+        </div>
+        <div class ="sliding_img_box">
+            <div class = "background">
+                <img src="restaurant_images/chef-food-service-us-foods-getty.jpeg">
+                <img src="restaurant_images/CoupleAtRestaurant_Lead.jpg">
+                <img src="restaurant_images/Restaurant-Services.jpg">
+                <img src="restaurant_images/restaurant-high-reservation.jpg">
+                <!-- <img src="restaurant_images/restaurant-background-01.jpg" > -->
+            </div>
+        </div>
+    <div>
+        <div id = "about">
+            <div class ="container">
+        
+                <div class = "row">
+                    <div class = "about-col-1">
+                        <img src="restaurant_images/restaurant-high-reservation.jpg">
+                    </div>
+        
+                    <div class = "about-col-2">
+                        <h1 class="sub-title">About Us</h1>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut quis nostrum incidunt et dolores laborum minima corporis quos cumque sed, iure voluptate vel, odio, dicta voluptates? Facere doloremque quo suscipit voluptatum inventore asperiores iusto eum quos perferendis delectus ducimus, saepe cumque illo tenetur odio dignissimos a ipsam placeat expedita porro!</p>
+                    
+                    <div class="tab-titles">
+                        <p class ="tab-links active-link" onclick=" opentab('Menu')">Menu</p>
+                        <p class ="tab-links" onclick=" opentab('services')">Services</p>
+                        <p class ="tab-links" onclick=" opentab('reservation')">Reservation</p>
+                    </div>
+        
+                    <div class="tab-contents active-tab" id ="Menu">
+                        <ul>
+                            <li><span>Italian</span><br>ndbcksevsjbvwvhlwsv</li>
+                            <li><span>Mexican</span><br>sdcnvshkenhvlshlvehwls</li>
+                            <li><span>Indian</span><br>cdbskbvkbskbvkbskvfhnvk</li>
+                            <li><span>Punjabi</span><br>dvskbkvkjsdvhhvdobvf</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id ="services">
+                        <ul>
+                            <li><span>Birthday Party</span><br>csbvbkjsbkvbkbskvksjbvdfksbv</li>
+                            <li><span>Special Celebration's</span><br>csjdbvjsbhdvbjsdbjvkbsjvsdvdfvdfbd</li>
+        
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id ="reservation">
+                        <ul>
+                            <li><span>Candle Light Dinner</span><br>dcskbvb   kshvh  iohobv</li>
+                            <li><span>Dinner</span><br>dcvskjvb   skjbvjbhskjdvh     kjdv</li>
+                            <li><span>Lunch</span><br>sdcvksbdvkjsb      kvkbdkfbvkldlkf</li>
+                            <li><span>Breakfast</span><br>afcmsvnsb   sdhcijsik hs  shdfihiwsh fno </li>
+                            
+                        </ul>
+                    </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+        
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+        </script>
+        
+        <script>
+            var sidemeu = document.getElementById("sidemenu");
+            function openmenu(){
+                sidemenu.style.right = "0";
+            }
+            function closemenu(){
+                sidemenu.style.right = "-200px";
+            }
+        
+        </script>
+        
+</body>
+</html>
