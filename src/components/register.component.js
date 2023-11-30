@@ -94,7 +94,7 @@ export default class Register extends Component {
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Sign Up</button>
+                    <button type="submit" className="btn btn-primary">Sign In</button>
                     
                 </form>
             </div>
