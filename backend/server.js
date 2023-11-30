@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 });
 
 // Use reservation routes
-app.use('/api/reservations', reservationRoutes);
+app.use('/api/reservations', reservationRoutes);  
 
 // Global error handler (optional but recommended)
 app.use((err, req, res, next) => {
