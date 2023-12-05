@@ -27,27 +27,24 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// const db = require("./models/index.js");
-
+const db = require("./models/index.js");
 const dbConfig = require("./config/db.config.js");
-mongoose.Promise = global.Promise;
-const db = {
+
+db.mongoose.Promise = global.Promise;
+/* const db = {
   mongoose : mongoose,
   url : dbConfig.url
-};
+}; */
+db.mongoose = mongoose;
+db.url = dbConfig.url;
 
-mongoose.connect(db.url).then(() => {
+db.mongoose.connect(db.url).then(() => {
   console.log("Connected to the AlphaDevsDB !!");
 })
 .catch(err => {
   console.log("Not able to connect database !!", err);
   process.exit();
 });
-
-/* async foo() {
-  await mongoose.connect(process.env.MONGO_URI); // add await
-  const connection = mongoose.connection;
-} */
 
 // Default route
 app.use("/", authRoute);
