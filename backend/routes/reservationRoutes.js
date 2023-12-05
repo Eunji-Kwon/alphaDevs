@@ -7,5 +7,6 @@ const reservationController = require('../controllers/reservationController');
 
 router.post('/create_re', reservationController.createReservation);
 router.get('/:email', reservationController.getReservationByEmail);
+router.get('/reservations/email/:email', reservationController.getReservationByEmail);
 
 module.exports = router;

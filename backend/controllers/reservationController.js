@@ -12,8 +12,7 @@ exports.createReservation = async (req, res) => {
 
 exports.getReservationByEmail = async (req, res) => {
     try {
-        console.log("Inn")
-        const reservation = await Reservation.findOne({ email: req.params.email });
+        const reservation = await Reservation.findOne({ contact: req.params.email });
         if (!reservation) {
             return res.status(404).json({ message: 'Reservation not found' });
         }
