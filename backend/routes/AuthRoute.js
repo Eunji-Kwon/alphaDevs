@@ -1,4 +1,4 @@
-const { Signup, Login, Logout } = require('../controllers/AuthController');
+const { Signup, Login, Logout, GetUser } = require('../controllers/AuthController');
 const router = require('express').Router();
 const { userVerification } = require('../middlewares/AuthMiddleware');
 
@@ -10,6 +10,8 @@ router.post('/signup', Signup);
 router.post('/login', Login);
 router.post('/logout', Logout);
 
-router.post('/', userVerification);
+router.use(userVerification);
+
+router.get('/user', GetUser);
 
 module.exports = router;

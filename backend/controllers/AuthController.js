@@ -50,10 +50,19 @@ module.exports.Login = async (req, res, next) => {
   }
 }
 
+module.exports.GetUser = async (req, res, next) => {
+  try {
+    res.status(201).json({ status: true, user: req.body });
+    next();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports.Logout = async (req, res) => {
   try {
     await res.clearCookie('token');
-    return res.json({ message: "User logged out successfully", success: true });
+    return res.json({ message: "User logged out successfully", status: true });
   } catch (error) {
     console.error(error);
   }

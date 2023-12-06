@@ -3,7 +3,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
+
 const authRoute = require("./routes/AuthRoute");
+const reservationRoutes = require('./routes/ReservationRoutes.js'); // Import reservation routes
+
 require("dotenv").config();
 
 const app = express();
@@ -48,6 +51,12 @@ db.mongoose.connect(db.url).then(() => {
 
 // Default route
 app.use("/", authRoute);
+app.use('/api/reservations', reservationRoutes);  
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.listen(PORT, () => {
   console.log(`Server is alive on ${PORT} address.`);
