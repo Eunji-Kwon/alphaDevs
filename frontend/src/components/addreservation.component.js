@@ -121,7 +121,7 @@ export default class ReservationLists extends Component {
                         </div>
 
                         <div className="form-group m-5">
-                            <label htmlFor="contactInput">Contact</label>
+                            <label htmlFor="contactInput">Email</label>
                             <input type="text" className="form-control" id="contactInput" value={this.state.contact} onChange={this.onChangeContact} />
                         </div>
 

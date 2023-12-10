@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './style.css'; // Make sure to import your CSS file
+import '../style/home.css'; 
 
 const AlphaRestaurant = () => {
   const [activeTab, setActiveTab] = useState('Menu');
@@ -48,7 +48,9 @@ const AlphaRestaurant = () => {
         <div className="container">
           <div className="row">
             <div className="about-col-1">
-              <img src='' alt="About Us" />
+              {/* <img src='frontend\public\home\chef-food-service-us-foods-getty.jpeg' alt="About Us" /> */}
+              <img  src={process.env.PUBLIC_URL + 'home/chef-food-service-us-foods-getty.jpeg'}   className="home-img"
+         alt="About Us Img"        />
             </div>
 
             <div className="about-col-2">
