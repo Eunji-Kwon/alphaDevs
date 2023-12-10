@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React,{Component} from "react";
 import { Link } from "react-router-dom";
 import '../style/home.css';
 import '../style/AD.css';
-
+import { login, logout } from '../AuthService';
 
 export default class Navigation extends Component {
     
@@ -11,22 +11,42 @@ export default class Navigation extends Component {
         this.state = {
             isLoggedIn: false // Login status
         };
-    }
 
+    }
+  
     // LogOut function
     handleLogout = () => {
-        // 여기에서 로그아웃 API를 호출하고 로그아웃 상태를 백엔드에 전달할 수 있습니다.
-        // 성공적으로 로그아웃되면 상태를 업데이트하고, UI를 변경합니다.
-        // 예시: 성공적으로 로그아웃되었다고 가정하여 상태를 변경
-        this.setState({ isLoggedIn: false });
+
+        logout()
+        .then(res => {
+            // logout
+            this.setState({ isLoggedIn: false });
+        })
+        .catch(error => {
+            console.error('LogOut Error:', error);
+        });
     };
 
+    
+  handleLogin = () => {
+    // You can implement the login functionality here using the login() function
+    // For example:
+    login('user@example.com', 'password')
+      .then(res => {
+        // login successful, update state or perform other actions
+        this.setState({ isLoggedIn: true });
+      })
+      .catch(error => {
+        console.error('Login Error:', error);
+      });
+  };
    
 
     render() {
      
-        const { isLoggedIn } = this.state;
 
+        const { isLoggedIn } = this.state;
+        
         return (
        
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  >
@@ -56,20 +76,23 @@ export default class Navigation extends Component {
                             </li>
 
 
-                           {/* 로그인 상태에 따라 다른 버튼을 표시 */}
-                        {isLoggedIn ? (
-                            <li className="nav-item active">
+                           {/* UI changed accroding to Log in-out status */}
+                       
+                           {/* Display different buttons based on login status */}
+                            {isLoggedIn ? (
+                                <li className="nav-item active">
                                 <button className="nav-link" onClick={this.handleLogout}>
                                     Logout
                                 </button>
-                            </li>
-                        ) : (
-                            <li className="nav-item active">
+                                </li>
+                            ) : (
+                                <li className="nav-item active">
                                 <Link className="nav-link" to="/login">
                                     Login
                                 </Link>
-                            </li>
-                        )}
+                                </li>
+                            )}
+                 
 
                         </ul>
                     </div>

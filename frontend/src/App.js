@@ -5,7 +5,6 @@ import {BrowserRouter as Router, Route, Link, Routes}
 
 
 import EditList from './components/editlist.component';
-
 import Navigation from './components/navigation.component';
 import Home from './components/home.component';
 import ReservationLists from './components/reservationlists.component';
