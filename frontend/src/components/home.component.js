@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../style/home.css'; 
+// import '../style/AD.css'
 
 const AlphaRestaurant = () => {
   const [activeTab, setActiveTab] = useState('Menu');
@@ -49,18 +50,15 @@ const AlphaRestaurant = () => {
           <div className="row">
             <div className="about-col-1">
               {/* <img src='frontend\public\home\chef-food-service-us-foods-getty.jpeg' alt="About Us" /> */}
-              <img  src={process.env.PUBLIC_URL + 'home/chef-food-service-us-foods-getty.jpeg'}   className="home-img"
-         alt="About Us Img"        />
+              <img  src={process.env.PUBLIC_URL + 'home/chef-food-service-us-foods-getty.jpeg'}   className="home-img"  alt="About Us Img" />
             </div>
 
             <div className="about-col-2">
               <h1 className="sub-title">About Us</h1>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut quis nostrum incidunt et dolores laborum
-                minima corporis quos cumque sed, iure voluptate vel, odio, dicta voluptates? Facere doloremque quo
-                suscipit voluptatum inventore asperiores iusto eum quos perferendis delectus ducimus, saepe cumque illo
-                tenetur odio dignissimos a ipsam placeat expedita porro!
-              </p>
+              <p>Welcome to Alpha Restaurant's advanced Reservation Management System,
+                 designed to make your dining reservation process seamless and enjoyable.
+                  Whether you're planning a special dinner or a casual meal, we're ready to serve you!</p>
+
 
               <div className="tab-titles">
                 <p
