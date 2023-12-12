@@ -32,8 +32,8 @@ body {
     overflow: hidden;
     border: 5px solid rgb(5, 100, 5);
     border-radius: 10px;
-
 }
+
 .background{
     width: 100%;
     height: 8cm;
@@ -77,19 +77,12 @@ nav{
     flex-wrap: wrap;
 }
 
-#header { /*Above navigation bar*/
-    height: 1.5vh;
-    /* background-image: url(restaurant_images/restaurant-background-01.jpg); */ */
-    /* background-size:cover;
-    background-position: center; */
-}
-
 nav ul li{ /*For nav menus Home, Menu, Abou etc*/
     display: inline-block;
     list-style: none;
-    margin: 20px 16px;
-    
+    margin: 20px 16px;    
 }
+
 nav ul li a{
     color: #fff;
     text-decoration: none;
@@ -107,6 +100,7 @@ nav ul li a::after{
     bottom: -6px;
     transition: 0.5s;
 }
+
 nav ul li a:hover::after { 
     width: 100%;
 }
@@ -128,6 +122,7 @@ nav ul li a:hover::after {
     font-size: 30px;
     margin-top: 20px;
 }
+
 .header-text p span{
     color: #ff004f;
 }
@@ -136,45 +131,112 @@ nav ul li a:hover::after {
     padding: 80px 0;
     color: #ababab;
 }
+
 .row{
     display:flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.about-col-1{
+/* .about-col-1{
     flex-basis: 35%;
-}
+} */
+
 .about-col-1 img{
-    width: 170%;
-    height: 50%;
-    margin-top: 140%;
+    display: flex;
+    width: 70%;
+    height: 100%;
+    margin-top: 0%;
+    margin-left: -35%;
     border-radius: 15px;
 }
 
 .about-col-2{
-    margin-top: -40%;
-    margin-left: 65%;
-    flex-basis: 60%;
-
+    margin-top: -47%;
+    margin-left: 45%;
+    flex-basis: 100%;
 }
+
+.about-col-2 h1{
+    color: aqua;
+    
+}
+
+.about-col-2 p{
+    margin-top: 5%;
+    color: white;
+    font-size:larger
+}
+
+.page_2_img1_welcome img{
+    margin-top: 30%;
+    display: flex;
+    width: 70%;
+    height: 65%;
+    border-radius: 15px;
+    margin-left: -45%;
+}
+
+.welcome_text {
+    color: aqua;
+    margin-top: -45%;
+    margin-left: 35%;
+    flex-basis: 100%;
+}
+
+.welcome_text p{
+    color: white;
+    font-size:larger
+}
+
+
+.page_2_img2_menu img{ 
+    margin-top: 10%;
+    display: flex;
+    width: 70%;
+    height: 90%;
+    border-radius: 15px;
+    margin-left: 70%;
+}
+
+.menu_text {
+    text-align-last: right;
+    color: aqua;
+    margin-top: -45%;
+    margin-left: -35%;
+    flex-basis: 100%;
+}
+
+.menu_text p{
+    text-align: right;
+    color: white;
+    font-size:larger
+}
+
 .sub-title{
     font-size: 50px;
     font-weight: 600;
     color: #fff
 }
+
+.sub-title h2{
+    color: aqua;
+    font-weight: bold;
+}
+
 .tab-titles{
     display: flex;
     margin: 20px 0 40px;
 }
+
 .tab-links{
     margin-right: 50px;
     font-size: 18px; 
     font-weight: 500;
     cursor: pointer;
     position: relative;
-
 }
+
 .tab-links::after{
     content: '';
     width: 0;
@@ -185,6 +247,7 @@ nav ul li a:hover::after {
     bottom: -8px;
     transition: 0.5s;
 }
+
 .tab-links.active-link::after{
     width: 50%;
 }
@@ -193,20 +256,22 @@ nav ul li a:hover::after {
     list-style: none;
     margin: 10px 0;
 }
+
 .tab-contents ul li span{
     color: #b54769;
     font-size: 14px;
 }
+
 .tab-contents{
     display: none;
 }
+
 .tab-contents.active-tab{
     display: block;
 }
 
-
 /* for sliding images */
-.container
+/* .container */
 /* .slider {
     padding-left: 1350px;
 
@@ -256,3 +321,48 @@ nav ul li a:hover::after {
     border-radius: 50px;
     background-color: lightgreen;
   } */
+
+.copyright{  /*copyright box*/
+    height: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background: #262626;
+    font-weight: 300;
+    display: flex;
+}
+
+.copyright p{ /*copyright text position*/
+    margin-top: 18px;
+    margin-left: 35%
+
+}
+
+.copyright img{
+    display: flex;
+    width: 10%;
+    height: 15%;
+}
+/* FOr the top scroll button */
+#myBtn {
+    
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: red; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    height: 50px;
+    border-radius: 30px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+    
+  }
+  
+  #myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
