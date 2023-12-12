@@ -1,155 +1,78 @@
-import React,{Component} from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { login } from '../AuthService';
 
-export default class Login extends Component{
+const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [error, setError] = useState("");
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            password: "",
-            isLoggedIn: false,
-            error: ""
-            
-        };
-    }
-
-    // onSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log(
-    //         "Email:",
-    //         this.state.email,
-    //         "and password:",
-    //         this.state.password
-    //     );
-    // };
-
-    // handleEmailChange = (e) => {
-    //     this.setState({ email: e.target.value });
-    // };
-
-    // handlePasswordChange = (e) => {
-    //     this.setState({ password: e.target.value });
-    // };
-    handleInputChange = event => {
+    const handleInputChange = event => {
         const { name, value } = event.target;
-        this.setState({ [name]: value });
+        if (name === 'email') setEmail(value);
+        if (name === 'password') setPassword(value);
     };
 
-    handleFormSubmit = event => {
+    const handleFormSubmit = event => {
         event.preventDefault();
-        const { email, password } = this.state;
 
         // Call the login function with user credentials
         login(email, password)
             .then(res => {
                 // Login successful, update state to reflect logged-in status
-                this.setState({ isLoggedIn: true });
-                this.props.history.push("/");
+                setIsLoggedIn(true);
+                // Redirect to home page using history object
+                window.location.href = "http://localhost:3000/"; // Replace with the desired URL
             })
             .catch(error => {
                 // Login failed, handle error (display error message, etc.)
                 console.error('Login Error:', error);
-                this.setState({ error: "Login failed. Please check your credentials." });
+                setError("Login failed. Please check your credentials.");
             });
     };
-   
-     render() {
-        const { email, password, isLoggedIn, error } = this.state;
 
-   // Redirect to '/' if the user is logged in
-   if (isLoggedIn) {
-    return <Link to="/" />;
+    if (isLoggedIn) {
+        // Return null or another component when logged in
+        return null; // 또는 원하는 다른 컴포넌트를 반환할 수 있습니다.
+    }
+
+    return (
+        <div className="container">
+            <div className="col-lg-4">
+                <h2>Login</h2>
+            </div>
+            {error && <p>{error}</p>}
+            <div className="col-lg-6">
+                <form onSubmit={handleFormSubmit}>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={email}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
+                </form>
+                <p>
+                    Don't have an account? <Link to="/register" className="btn btn-link">Register</Link>
+                </p>
+            </div>
+        </div>
+    );
 }
 
-      return (
-        <div>
-        <h2>Login</h2>
-        {error && <p>{error}</p>}
-        <form onSubmit={this.handleFormSubmit}>
-            <div>
-                <label>Email:</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={this.handleInputChange}
-                    required
-                />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={this.handleInputChange}
-                    required
-                />
-            </div>
-            <button type="submit">Login</button>
-        </form>
-        <p>
-            Don't have an account? <Link to="/register">Sign Up</Link>
-        </p>
-    </div>
-      );
-    }
-  }
-
-    //     return (
-    //         <div class="container">
-    //             <div class="col-lg-4">
-    //                 <p>LogIn Page</p>
-    //             </div>
-    //             <div class="col-lg-6">
-    //                 <form onSubmit={this.onSubmit}>
-    //                 <div className="form-group">
-
-    //                 <label htmlFor="email">Email</label>
-    //                     <input
-    //                         type="email"
-    //                         className="form-control"
-    //                         id="email"
-    //                         value={this.state.email}
-    //                         onChange={this.handleEmailChange}
-    //                         placeholder="Enter your email"
-    //                         required
-    //                     />
-    //                     </div>
-
-    //                     <div className="form-group">
-    //                     <label htmlFor="password">Password</label>
-    //                     <input
-    //                         type="password"
-    //                         className="form-control"
-    //                         id="password"
-    //                         value={this.state.password}
-    //                         onChange={this.handlePasswordChange}
-    //                         placeholder="Enter your password"
-    //                         required
-    //                     />
-    //                 </div>
-                   
-    //                     {/* <div class="form-group">
-    //                         <label for="exampleFormControlInput1">Email</label>
-    //                         <input type="text" class="form-control" value="Email"/>
-    //                     </div>
-
-    //                     <div class="form-group">
-    //                         <label for="exampleFormControlInput1">Password</label>
-    //                         <input type="text" class="form-control" value="password" />
-    //                     </div> */}
-
-                        
-    //                     <button type="submit" class="btn btn-primary">Login</button>
-                      
-    //                 </form>
-    //             </div>
-    //             <Link to="/register" className="btn btn-link">Sign In</Link>
-
-    //         </div>
-    //     )
-    // }
-//}
+export default Login;
