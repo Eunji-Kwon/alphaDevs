@@ -23,7 +23,7 @@ const Login = () => {
                 // Login successful, update state to reflect logged-in status
                 setIsLoggedIn(true);
                 // Redirect to home page using history object
-                window.location.href = "http://localhost:3000/"; // Replace with the desired URL
+              
             })
             .catch(error => {
                 // Login failed, handle error (display error message, etc.)
@@ -34,7 +34,7 @@ const Login = () => {
 
     if (isLoggedIn) {
         // Return null or another component when logged in
-        return null; // 또는 원하는 다른 컴포넌트를 반환할 수 있습니다.
+        return   window.location.href = "http://localhost:3000/"; 
     }
 
     return (

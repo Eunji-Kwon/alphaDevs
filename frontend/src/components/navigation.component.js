@@ -1,7 +1,6 @@
 import React,{Component} from "react";
 import { Link } from "react-router-dom";
 import '../style/home.css';
-import '../style/AD.css';
 import { login, logout } from '../AuthService';
 
 export default class Navigation extends Component {
@@ -98,6 +97,7 @@ export default class Navigation extends Component {
                     </div>
 
                 </nav>
+                
         )
     }
 }

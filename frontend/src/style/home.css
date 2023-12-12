@@ -69,7 +69,7 @@ body {
 }
 
 nav{
-    background-color: rgb(5, 20, 5);
+    background-color: #3f3d36;
     color: burlywood;
     display: flex;
     align-items: center;
@@ -126,7 +126,7 @@ nav ul li a:hover::after {
 }
 
 #about{
-    padding: 80px 0;
+    padding: 20px 0;
     color: #ababab;
 }
 .row{
@@ -197,6 +197,53 @@ nav ul li a:hover::after {
     display: block;
 }
 
+
+/*Added by Eunji*/
+/* Inside your home.css file */
+
+/* Style for the footer */
+.footer {
+    background-color: #24221c;
+    padding: 20px; /* Adjust the padding as needed */
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Align items with space in-between */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Set the width to occupy the full width of the viewport */
+  }
+  
+  /* Style for the logo image */
+  .footer img {
+    max-width: 100px; /* Set the maximum width of the image */
+    height: auto;
+  }
+  
+  /* Style for the footer text */
+  .footer p {
+    text-align: center; /* Center the text horizontally */
+    margin: 0; /* Remove default margin */
+    flex: 1; /* Allow the text to take remaining space */
+  }
+
+  .scroll-to-top {
+    font-size: medium;
+    text-align: center;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3f3d36;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .scroll-to-top:hover {
+    opacity: 0.8;
+  }
+  
 
 /* for sliding images */
 /* .container */
