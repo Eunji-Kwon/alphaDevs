@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
 const authRoute = require("./routes/AuthRoute");
-const reservationRoutes = require('./routes/ReservationRoutes.js'); // Import reservation routes
+const reservationRoute = require('./routes/ReservationRoute'); // Make sure the path is correct
 
 require("dotenv").config();
 
@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 var corsOptions = {
-  origin: ["http://localhost:"+PORT],
+  origin: ["http://localhost:"+PORT, "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
@@ -50,8 +50,9 @@ db.mongoose.connect(db.url).then(() => {
 });
 
 // Default route
-app.use("/", authRoute);
-app.use('/api/reservations', reservationRoutes);  
+app.use("/admin", authRoute);
+// app.use('/api/reservations', reservationRoute);  
+app.use('/api/reservations', reservationRoute);  
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

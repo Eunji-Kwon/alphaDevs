@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
+  userRole: {
+    type: Number,
+    default: 1
+  }
 });
 
 userSchema.pre("save", async function () {

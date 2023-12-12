@@ -18,7 +18,7 @@ let Reservation = new Schema({
     lastName: {
         type: String
     },
-    contact: {
+    email: {
         type: String,
         required: true,
         validate: [validator.isEmail, 'Invalid email address'] // Email validation

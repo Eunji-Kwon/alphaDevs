@@ -1,6 +1,8 @@
 const User = require("../models/UserModel");
 const { createSecretToken } = require("../config/SecretToken");
 const bcrypt = require("bcryptjs");
+const { userVerification } = require("../middlewares/AuthMiddleware");
+const jwt = require('jsonwebtoken');
 
 module.exports.Signup = async (req, res, next) => {
   try {
@@ -9,7 +11,7 @@ module.exports.Signup = async (req, res, next) => {
     if (existingUser) {
       return res.json({ message: "User already exists" });
     }
-    const user = await User.create({ email, password, username, createdAt });
+    const user = await User.create({ email, password, username, createdAt, userRole: 1 });
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
       withCredentials: true,
@@ -18,7 +20,7 @@ module.exports.Signup = async (req, res, next) => {
     res
       .status(201)
       .json({ message: "User signed in successfully", success: true, user });
-    next();
+    // next();
   } catch (error) {
     console.error(error);
   }
@@ -44,7 +46,7 @@ module.exports.Login = async (req, res, next) => {
       httpOnly: false,
     });
     res.status(201).json({ message: "User logged in successfully", success: true });
-    next();
+    // next();
   } catch (error) {
     console.error(error);
   }
@@ -52,8 +54,15 @@ module.exports.Login = async (req, res, next) => {
 
 module.exports.GetUser = async (req, res, next) => {
   try {
-    res.status(201).json({ status: true, user: req.body });
-    next();
+    const token = req.cookies.token;
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+      if (err) {
+        console.error('Token verification failed:', err.message);
+      } else {
+        const user = await User.findById(decoded.id);
+        return res.status(201).json({ status: true, user: user });
+      }
+    });
   } catch (error) {
     console.error(error);
   }
