@@ -1,0 +1,32 @@
+.italian-menu {
+text-align: center;
+  padding: 20px;
+  color: #ddd;
+
+}
+
+.menu-section {
+  margin-bottom: 30px;
+}
+
+.menu-item {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 15px;
+  width: 300px;
+  text-align: left;
+  display: inline-block;
+  background-color: #1e1e1eca;
+}
+
+@media (max-width: 600px) {
+  .menu-item {
+    width: 100%;
+  }
+}
+
+.card img{
+  height: 500px;
+  width: 100%;
+
+}

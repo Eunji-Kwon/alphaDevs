@@ -1,10 +1,10 @@
 import React,{Component} from "react";
 
-export default class Reservation extends Component{
+export default class EditList extends Component{
     render(){
         return(
             <div>
-                <p>Welcome to Reservation</p>
+                <p>Welcome to Edit list</p>
             </div>
         )
     }

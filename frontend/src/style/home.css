@@ -1,0 +1,332 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(5, 20, 5);
+    color: #ffff;
+}
+
+.logo{
+    width: 200px;
+}
+
+.container{ /*Bg image and text akhano block nu setting*/
+    padding-left: 5px;
+    width: 20cm;
+}
+
+.sliding_img_box{
+    width: 12cm;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top:40%;
+    left: 80%;
+    overflow: hidden;
+    border: 5px solid rgb(5, 100, 5);
+    border-radius: 10px;
+
+}
+.background{
+    width: 100%;
+    height: 8cm;
+    display: flex;
+    animation: slide 10s infinite;
+}
+
+@keyframes slide{
+    0% {
+        transform: translateX(0);
+    }
+    15% {
+        transform: translateX(0%);
+    }
+    30% {
+        transform: translateX(-102%);
+    }
+    45% {
+        transform: translateX(-102%);
+    }
+    60% {
+        transform: translateX(-204%);
+    }
+    75% {
+        transform: translateX(-204%);
+    }
+    90% {
+        transform: translateX(-305%);
+    }
+    100% {
+        transform: translateX(-305%);
+    }
+}
+
+nav{
+    background-color: #3f3d36;
+    color: burlywood;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav ul li{ /*For nav menus Home, Menu, Abou etc*/
+    display: inline-block;
+    list-style: none;
+    margin: 20px 16px;
+    
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after { 
+    width: 100%;
+}
+/* .nav-links {
+    transition: 0.5s;
+} */
+
+/* .nav-links:hover {
+    border-bottom: 1px solid #ff004f;
+    /* transition: background-position 150ms ease-out; */
+
+
+.header-text{ /*Alpha Restaurant vadi text mate */
+    margin-top: 5%;
+    font-size: 50px;
+}
+
+.header-text h1{
+    font-size: 30px;
+    margin-top: 20px;
+}
+.header-text p span{
+    color: #ff004f;
+}
+
+#about{
+    padding: 10px 0;
+    color: #ababab;
+}
+.row{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 170%;
+    height: 50%;
+    margin-top: 140%;
+    border-radius: 15px;
+}
+
+.about-col-2{
+    margin-top: -40%;
+    margin-left: 65%;
+    flex-basis: 60%;
+
+}
+
+.page_2_img1_welcome{
+    width: 170%;
+    height: 50%;
+    margin-top: 20%;
+    border-radius: 15px;
+    
+}
+.page_2_img1_welcome img{
+    width: 50%;
+    height: 50%;
+    
+    border-radius: 15px;
+}
+
+.page_2_img2_menu{
+    width: 170%;
+    height: 50%;
+    margin-top: 20%;
+    border-radius: 15px;
+}
+.page_2_img2_menu img{
+    width: 50%;
+    height: 50%;
+    
+    border-radius: 15px;
+}
+
+
+.sub-title{
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff
+}
+.sub-title-2{
+    color:#fff;
+    font-size: 32px;
+}
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px; 
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #b54769;
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+
+
+/*Added by Eunji*/
+/* Inside your home.css file */
+
+/* Style for the footer */
+.footer {
+    background-color: #24221c;
+    padding: 20px; /* Adjust the padding as needed */
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Align items with space in-between */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Set the width to occupy the full width of the viewport */
+  }
+  
+  /* Style for the logo image */
+  .footer img {
+    max-width: 100px; /* Set the maximum width of the image */
+    height: auto;
+  }
+  
+  /* Style for the footer text */
+  .footer p {
+    text-align: center; /* Center the text horizontally */
+    margin: 0; /* Remove default margin */
+    flex: 1; /* Allow the text to take remaining space */
+  }
+
+  .scroll-to-top {
+    font-size: medium;
+    text-align: center;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3f3d36;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .scroll-to-top:hover {
+    opacity: 0.8;
+  }
+  
+
+/* for sliding images */
+/* .container */
+/* .slider {
+    padding-left: 1350px;
+
+    width: 500px;
+    height: 300px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .image-container {
+    width: 1500px;
+    background-color: pink;
+    height: 100px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+  }
+  .slide {
+    float: left;
+    margin: 0px;
+    padding-left: 0px;
+    position: relative;
+  }
+  #slide-1:target ~ .image-container {
+    left: 0px;
+  }
+  #slide-2:target ~ .image-container {
+    left: -500px;
+  }
+  #slide-3:target ~ .image-container {
+    left: -1000px;
+  }
+  .buttons {
+    position: relative;
+    top: -20px;
+  }
+  .buttons a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: lightgreen;
+  } */
