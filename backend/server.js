@@ -61,4 +61,6 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
   console.log(`Server is alive on ${PORT} address.`);
+
+  app.use('/', express.static('/build'));
 });
