@@ -93,7 +93,7 @@ export default class ReservationLists extends Component {
             border: '1px solid gray',
             padding: '10px',
             marginTop: '10%',
-            marginBottom: 'auto'
+            marginBottom: '10%'
         };
 
         return (

@@ -6,6 +6,7 @@ const ReservationLists = () => {
     const [email, setEmail] = useState('');
     const [reservation, setReservation] = useState(null);
     const [error, setError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
 
     const fetchReservation = async () => {
         try {
@@ -49,7 +50,7 @@ const ReservationLists = () => {
         fontSize: '18px',
         border: '1px solid gray',
         marginTop: '10%',
-        marginBottom: 'auto',
+        marginBottom: '10%',
         marginRight: '20%',
         marginLeft: '20%'
     };
@@ -65,9 +66,13 @@ const ReservationLists = () => {
     };
 
     return (
-    
         <div style={myStyle}>
-             
+            {!isLoggedIn && (
+                <div style={{ backgroundColor: '#f0ad4e', padding: '10px', marginBottom: '10px', borderRadius: '4px' }}>
+                    If you want to see the menu, please log in to your account!
+                </div>
+            )}
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
@@ -89,10 +94,6 @@ const ReservationLists = () => {
             )}
             {error && <div style={{ color: 'red', margin: '10px 0' }}>{error}</div>}
         </div>
-      
-     
-       
-       
     );
 };
 
